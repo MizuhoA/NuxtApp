@@ -154,12 +154,14 @@ export default {
             return price >= minprice || `Price must be larger than 0.1 currency.name`;
           }, 
       },  
-      isLoading: false, 
+      isLoading: false
     }
   }, 
   methods: {
     loading() {
       this.isLoading = true;
+      this.$store.commit("addSetting", [this.exchange.name, this.currency.name, this.startingPrice, this.targetingPrice]);
+      this.isLoading = false;
     }
   }
 }
